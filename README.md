@@ -101,7 +101,7 @@ After extracting the screens, our next stage in the pipeline is to find all the 
           * Size: M
           * Epochs: 25
           * Learning Rate: 0.01 
-          * Mean Inference time: 650 ms
+          * Mean Inference time: 700 ms
           * Average Precision: 0.77
 
       * PaddleOCR:
@@ -109,14 +109,14 @@ After extracting the screens, our next stage in the pipeline is to find all the 
          PaddleOCR is an optical character detection and recognition model implemented using PaddlePaddle (PArallel Distributed Deep LEarning) framework. In our pipeline, we have used Pre-trained PaddleOCR to detect numbers from the extracted screen. The details of the hyperparameters are as follows:
           * Recognition Algorithm: CRNN
           * Detection Algorithm: DB
-          * Mean Inference Time: 2.5 s
+          * Mean Inference Time: 300 ms
 
     * Weighted Box Fusion of PaddleOCR and YOLO:
               
          Fine-tuned YOLOv5 is showing promising results on layouts it was trained on but a relatively low accuracy on unseen layouts. In any case, it was not giving any noise in the prediction. Pre-trained PaddleOCR captures boxes of all numbers on the screens, but being a text recognition model, it also predicts few noise in the screens, which is not required. Hence, we ensemble the predictions of both the models, using Weighted Box Fusion algorithm, taking the good points of both algorithms, thereby resulting in much more robust predictions.
       * Weighted Box Fusion algorithm utilizes confidence scores of all proposed bounding boxes to construct the averaged boxes. 
 
-       * Mean Inference Time - 3.3 s
+       * Mean Inference Time - 1.6 s
 
 
 
